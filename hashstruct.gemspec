@@ -7,7 +7,7 @@ require 'hashstruct'
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = HashStruct::VERSION
+  s.version       = '0.0.2'
   s.summary       = 'Overly helpful magic hash structure.'
   
   s.author        = 'John Labovitz'
