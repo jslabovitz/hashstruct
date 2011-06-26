@@ -2,9 +2,7 @@ require 'date'
 require 'uri'
 
 class HashStruct < Hash
-  
-  VERSION = '0.0.2'
-  
+    
   def initialize(args={})
     super()
     args.each { |key, value| self[key] = value }
