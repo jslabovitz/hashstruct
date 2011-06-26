@@ -7,7 +7,7 @@ require 'hashstruct'
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = '0.0.2'
+  s.version       = Hashstruct::VERSION
   s.summary       = 'Overly helpful magic hash structure.'
   
   s.author        = 'John Labovitz'
@@ -21,5 +21,4 @@ Gem::Specification.new do |s|
   
   s.files         = Dir.glob('lib/**/*') + %w(README.mdown)
   s.require_path  = 'lib'
-  s.required_rubygems_version = '>= 1.6.2'
 end
