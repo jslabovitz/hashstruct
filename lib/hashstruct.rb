@@ -34,6 +34,9 @@ class HashStruct < Hash
       # integer
       when %r{^-?[\d,]+$}
         obj.to_i
+      # hex integer
+      when %r{^0x[0-9a-f]+$}i
+        obj.hex
       # float
       when %r{^-?[\d,]+\.\d+$}
         obj.to_f
