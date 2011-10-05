@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = '0.0.2'
+  s.version       = '0.0.3'
   s.summary       = 'Overly helpful magic hash structure.'
   
   s.author        = 'John Labovitz'
