@@ -2,16 +2,16 @@ require 'date'
 require 'uri'
 
 class HashStruct < Hash
-    
+
   def initialize(args={})
     super()
     args.each { |key, value| self[key] = value }
   end
-  
+
   def []=(key, value)
     self.store(key.to_s.to_sym, convert_object(value))
   end
-  
+
   def method_missing(method_id, *args)
     method_name = method_id.to_s
     if method_name =~ /=$/
@@ -23,7 +23,7 @@ class HashStruct < Hash
       self[method_id]
     end
   end
-  
+
   def convert_object(obj)
     case obj
     when String
@@ -32,7 +32,7 @@ class HashStruct < Hash
       when %r{^(ftp|http|https|mailto):}
         URI.parse(obj) rescue obj
       # integer
-      when %r{^-?[\d,]+$}
+      when %r{^-?[1-9][\d,]*$}
         obj.gsub(/,/, '').to_i
       # hex integer
       when %r{^0x[0-9a-f]+$}i
@@ -68,5 +68,5 @@ class HashStruct < Hash
       obj
     end
   end
-  
+
 end

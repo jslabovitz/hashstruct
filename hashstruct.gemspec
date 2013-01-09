@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = '0.0.4'
+  s.version       = '0.0.5'
   s.summary       = 'Overly helpful magic hash structure.'
-  
+
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
   s.description   = %q{
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
     URIs, numbers, and does so recursively.
   }
   s.homepage      = 'http://github.com/jslabovitz/hashstruct'
-  
+
   s.files         = Dir.glob('lib/**/*') + %w(README.mdown)
   s.require_path  = 'lib'
 end
