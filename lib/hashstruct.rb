@@ -8,8 +8,23 @@ class HashStruct < Hash
     args.each { |key, value| self[key] = value }
   end
 
+  def [](key)
+    key = key.to_sym
+    if methods.include?(key)
+      method(key).call
+    elsif has_key?(key)
+      fetch(key)
+    else
+      nil
+    end
+  end
+
   def []=(key, value)
-    self.store(key.to_s.to_sym, convert_object(value))
+    if methods.include?(:"#{key}=")
+      method(:"#{key}=").call(convert_object(value))
+    else
+      store(key.to_s.to_sym, convert_object(value))
+    end
   end
 
   def method_missing(method_id, *args)
