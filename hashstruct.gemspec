@@ -1,10 +1,13 @@
-# -*- encoding: utf-8 -*-
+#encoding: utf-8
+
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+
+require 'hashstruct'
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = '0.0.6'
+  s.version       = HashStruct::VERSION
   s.summary       = 'Overly helpful magic hash structure.'
-
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
   s.description   = %q{
@@ -13,7 +16,6 @@ Gem::Specification.new do |s|
     URIs, numbers, and does so recursively.
   }
   s.homepage      = 'http://github.com/jslabovitz/hashstruct'
-
   s.files         = Dir.glob('lib/**/*') + %w(README.mdown)
   s.require_path  = 'lib'
 end

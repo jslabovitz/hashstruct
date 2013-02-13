@@ -3,6 +3,8 @@ require 'uri'
 
 class HashStruct < Hash
 
+  VERSION = '1.0.0'
+
   def initialize(args={})
     super()
     args.each { |key, value| self[key] = value }

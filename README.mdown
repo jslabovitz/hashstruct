@@ -13,18 +13,18 @@ Or you can pass it a hash of existing values:
     h = HashStruct.new(
       :foo => 1,
       :bar => 'z')
-    
+
 Or simply an existing hash:
 
     thing = { :foo => 1, :bar => 'z' }
     h = HashStruct.new(thing)
-  
+
 Or because it's a Hash underneath, you can use the '[]' construction method:
 
     h = HashStruct[
       [:foo, 1], [:bar, 'z']
     ]
-  
+
 Or a combination:
 
     h = HashStruct.new(
@@ -45,5 +45,25 @@ HashStruct magically converts any values from strings (and sub-arrays/hashes) to
       :a_percentage => '50%',                       # => 0.5
       :an_int_array => %w{1 2 3},                   # => [1, 2, 3]
     )
-    
-No, you can't turn off the magical conversion.  (Secret: you could monkey-patch `#convert_value` to simply return the passed-in object.)
+
+You can't turn off the magical conversion. (Secret: you could monkey-patch `#convert_value` to
+simply return the passed-in object.)
+
+You can also easily subclass HashStruct. You can add helper methods if needed, or accessor methods,
+which will be noticed and used by HashStruct. Note that any additional instance variables are not treated
+as part of the structure.
+
+  class Thing < HashStruct
+
+    attr_accessor :mul
+
+    def foo_mul
+      self.foo * @mul
+    end
+
+  end
+
+  t = Thing.new
+  t.foo = 2
+  t.mul = 2
+  t.foo_mul   # => 4
