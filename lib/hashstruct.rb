@@ -60,6 +60,9 @@ class HashStruct < Hash
       # percent
       when %r{^-?[\d,]+(\.\d+)?%$}
         obj.to_f / 100
+      # rational
+      when %r{^(\d+)/(\d+)$}
+        Rational($1.to_i, $2.to_i)
       # date
       when %r{^\d{4}-\d{2}-\d{2}},      # 2010-06-06
            %r{^\d{1,2}/\d{1,2}/\d{4}},  # 06/06/2010
