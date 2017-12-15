@@ -70,10 +70,10 @@ class HashStruct < Hash
            %r{^(Sun|Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*\d*\s*\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b}  # Sun, 06 Jun 2010 23:02:25 GMT
         DateTime.parse(obj)
       # boolean true
-      when 'true'
+      when 'true', 'yes', 'on'
         true
       # boolean false
-      when 'false'
+      when 'false', 'no', 'off'
         false
       else
         obj
