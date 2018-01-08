@@ -1,6 +1,6 @@
 #encoding: utf-8
 
-require_relative 'lib/hashstruct'
+require_relative 'lib/hashstruct/version'
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
