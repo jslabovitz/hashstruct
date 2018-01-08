@@ -1,8 +1,6 @@
 #encoding: utf-8
 
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-
-require 'hashstruct'
+require_relative 'lib/hashstruct'
 
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
@@ -15,7 +13,13 @@ Gem::Specification.new do |s|
     accessors for each key from the get-go. It also magically parses string values when it can (eg, dates,
     URIs, numbers, and does so recursively.
   }
+  s.license       = 'MIT'
   s.homepage      = 'http://github.com/jslabovitz/hashstruct'
-  s.files         = Dir.glob('lib/**/*') + %w(README.mdown)
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_path  = 'lib'
+
+  s.add_development_dependency 'rake', '~> 12.3'
+  s.add_development_dependency 'rubygems-tasks', '~> 0.2'
 end

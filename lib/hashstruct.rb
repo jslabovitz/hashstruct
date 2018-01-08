@@ -1,9 +1,9 @@
 require 'date'
 require 'uri'
 
-class HashStruct < Hash
+require 'hashstruct/version'
 
-  VERSION = '1.2'
+class HashStruct < Hash
 
   def initialize(args={})
     super()
