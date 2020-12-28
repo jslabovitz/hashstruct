@@ -9,22 +9,12 @@ class HashStruct < Hash
   end
 
   def [](key)
-    key = key.to_sym
-    if methods.include?(key)
-      method(key).call
-    elsif has_key?(key)
-      fetch(key)
-    else
-      nil
-    end
+    key = make_key(key)
+    has_key?(key) ? fetch(key) : nil
   end
 
   def []=(key, value)
-    if methods.include?(:"#{key}=")
-      method(:"#{key}=").call(convert_object(value))
-    else
-      store(key.to_s.to_sym, convert_object(value))
-    end
+    store(make_key(key), convert_object(value))
   end
 
   def method_missing(method_id, *args)
@@ -32,11 +22,15 @@ class HashStruct < Hash
     if method_name =~ /=$/
       raise ArgumentError, "wrong number of arguments for method #{method_name.inspect} (#{args.length} for 1)", caller(1) if args.length != 1
       raise TypeError, "can't modify frozen #{self.class}", caller(1) if self.frozen?
-      self[method_name.chop.to_sym] = args.first
+      self[method_name.chop] = args.first
     else
       raise ArgumentError, "wrong number of arguments (#{args.length} for 0)", caller(1) if args.length != 0
       self[method_id]
     end
+  end
+
+  def make_key(obj)
+    obj.to_s.downcase.to_sym
   end
 
   def convert_object(obj)
