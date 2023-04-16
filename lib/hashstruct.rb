@@ -56,11 +56,10 @@ class HashStruct < Hash
       when %r{^(\d+)/(\d+)$}
         Rational($1.to_i, $2.to_i)
       # date
-      when %r{^\d{4}-\d{2}-\d{2}},      # 2010-06-06
-           %r{^\d{1,2}/\d{1,2}/\d{4}},  # 06/06/2010
-           %r{^\d{4}/\d{1,2}/\d{1,2}},  # 2010/06/06
-           %r{^(Sun|Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*\d*\s*\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b}  # Sun, 06 Jun 2010 23:02:25 GMT
-        DateTime.parse(obj)
+      when %r{^\d{4}-\d{2}-\d{2}$},      # 2010-06-06
+           %r{^\d{1,2}/\d{1,2}/\d{4}$},  # 06/06/2010
+           %r{^\d{4}/\d{1,2}/\d{1,2}$}   # 2010/06/06
+        Date.parse(obj)
       # boolean true
       when 'true', 'yes', 'on'
         true
