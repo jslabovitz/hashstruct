@@ -1,8 +1,6 @@
-require_relative 'lib/hashstruct/version'
-
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = HashStruct::VERSION
+  s.version       = '1.4'
   s.summary       = 'Overly helpful magic hash structure.'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
