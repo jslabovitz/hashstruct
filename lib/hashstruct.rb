@@ -56,9 +56,9 @@ class HashStruct < Hash
       when %r{^(\d+)/(\d+)$}
         Rational($1.to_i, $2.to_i)
       # date
-      when %r{^\d{4}-\d{2}-\d{2}$},      # 2010-06-06
-           %r{^\d{1,2}/\d{1,2}/\d{4}$},  # 06/06/2010
-           %r{^\d{4}/\d{1,2}/\d{1,2}$}   # 2010/06/06
+      when %r{^\d{4}-\d{2}-\d{2}},      # 2010-06-06
+           %r{^\d{1,2}/\d{1,2}/\d{4}},  # 06/06/2010
+           %r{^\d{4}/\d{1,2}/\d{1,2}}   # 2010/06/06
         Date.parse(obj)
       # boolean true
       when 'true', 'yes', 'on'
