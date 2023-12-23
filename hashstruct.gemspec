@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'hashstruct'
-  s.version       = '1.4'
+  s.version       = '1.5'
   s.summary       = 'Overly helpful magic hash structure.'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
