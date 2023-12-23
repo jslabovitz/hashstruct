@@ -30,7 +30,7 @@ class HashStruct < Hash
   end
 
   def _make_key(obj)
-    obj.to_s.downcase.to_sym
+    obj.to_s.downcase.gsub(/[^\w]/, '_').to_sym
   end
 
   def _convert_object(obj)
