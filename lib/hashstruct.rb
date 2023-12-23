@@ -9,12 +9,12 @@ class HashStruct < Hash
   end
 
   def [](key)
-    key = make_key(key)
+    key = _make_key(key)
     has_key?(key) ? fetch(key) : nil
   end
 
   def []=(key, value)
-    store(make_key(key), convert_object(value))
+    store(_make_key(key), _convert_object(value))
   end
 
   def method_missing(method_id, *args)
@@ -29,11 +29,11 @@ class HashStruct < Hash
     end
   end
 
-  def make_key(obj)
+  def _make_key(obj)
     obj.to_s.downcase.to_sym
   end
 
-  def convert_object(obj)
+  def _convert_object(obj)
     case obj
     when String
       case obj
@@ -70,7 +70,7 @@ class HashStruct < Hash
         obj
       end
     when Array
-      obj.map { |o| convert_object(o) }
+      obj.map { |o| _convert_object(o) }
     when Hash
       HashStruct.new(obj)
     when HashStruct
