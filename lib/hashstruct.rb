@@ -36,7 +36,7 @@ class HashStruct < Hash
   def _convert_object(obj)
     case obj
     when String
-      case obj
+      case obj.strip
       # URI
       when %r{^(ftp|http|https|mailto):}
         URI.parse(obj) rescue obj
@@ -66,6 +66,9 @@ class HashStruct < Hash
       # boolean false
       when 'false', 'no', 'off'
         false
+      # nil or empty string
+      when nil, ''
+        nil
       else
         obj
       end
